@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+body{
+	padding: 0;
+	margin: 0;
+	background:#f4f4f4;
+	font-family:  'Poppins',sans-serif;}
+
+#logo {
+	width: 36px;
+    height: 46px;
+}
+.navbar{
+	background:#ffffff85;
+}
+.nav-link {
+	color: rgb(18,119,126);
+	cursor: pointer;
+}
+.navbar-brand{
+	color: rgb(18,119,126);
+	cursor: pointer;
+}
+.nav-link{
+	margin-right: 1em !important;
+}
+.nav-link:hover{
+	background: #f4f4f4;
+	color: rgb(243,190,78);
+	
+
+}
+.navbar-collapse{
+ justify-content: flex-end;
+}
+.navbar-toggler{
+  background:#fff !important;
+}
+
+
+.header{
+	position: relative;
+	background-image: url('../images/4.jpg');
+
+	background-size: cover;
+	background-position: center;
+}
+.overlay{
+	position: absolute;
+	min-height: 100%;
+	min-width: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(87, 86, 86, 0.479);
+}
+.description{
+	position: relative;
+    margin: auto;
+    padding: 2em;
+
+}
+.description h1{
+	color:whitesmoke ;
+	margin-top: 25%;
+	margin-bottom: 25%;
+}
+.description p{
+	color:whitesmoke ;
+	font-size: 20px;
+	width: 50%;
+	line-height: 1.5;
+}
+.description button{
+	border:1px  solid rgb(243,190,78) ;
+	color:#fff;
+	letter-spacing: 1px;
+
+}
+
+.description button:hover{
+	background: rgb(243,190,78);
+	letter-spacing: 6px;
+
+}
+
+
+/* services */
+.service h1 .text-center{
+color: #12777e;
+margin-top: 6%;
+margin-bottom: 6%;
+}
+/* end service */
+
+
+	 /* rgb(18,119,126) VERT
+	 rgb(243,190,78) JAUNE
+	 rgb(235,39,54) rOUGE */
+
+
+/* product */
+.products h1{
+margin-top: 6%;
+margin-bottom: 6%;
+font-size: 30px;
+}
+.products h4 {
+	color: rgb(18,119,126);
+	font-size: 17px;
+}
+.products p {
+	color: #494949;
+	font-size: 10px;
+}
+/* end product */
+
+
+/* products price */
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: rgb(18,119,126);
+    border-radius: 50%;
+    display: inline-block
+}
+.strike-text {
+    color: red;
+    text-decoration: line-through
+}
+
+/* end products price */
+
+
+
+/* footer */
+.Footeer{
+    background: linear-gradient(45deg, #12777e , #2b2b2b);
+	
+}
+.Footeer h1 {
+	color: #fff;
+	
+
+}
+
+
+/* END FOOTER */

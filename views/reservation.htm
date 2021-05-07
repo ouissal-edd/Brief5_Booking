@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../app/css/reservation.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container"> 
+<label> choose room and number of room</label>
+
+<form  method="get">
+    <input type="checkbox" id="apprtmnt" onclick="checkApp()" name="appartement" value="appart">
+    <label for="appartement"> Appartement</label><div id="apart"></div>
+
+    <input type="checkbox" id="bunglw" onclick="checkBunglow()" name="bunglow" value="bngl">
+    <label for="bunglow"> Bunglow</label><div id="bng" ></div>
+    <input type="checkbox" id="chmbr" onclick="checkChamb()" name="chambre" value="chmb">
+    <label for="chambre"> Chambre</label><div id="chmbre"></div>
+    <div class="nbLitdb"></div>
+<br>
+    <label>Pension </label>
+    <select id="pensio" onchange="pension()">
+      <option value="complete">Complete</option>
+      <option value="sans">sans</option>
+      <option value="demi" >Demi</option>
+    </select>
+    <div id="Demip" ></div>
+
+    <div id="enfantsExiste">
+      <div class="child">
+        <p>Number of child :</p>
+        <input type="number" min="0" max="8" id="nbchild" />
+        <div  class="children"></div>
+        <div></div>
+      </div>
+</div>
+  </form>
+
+
+  <button onchange="Calcule()">calcule</button>
+  <div id="affichePrix"></div>
+</div>
+<script src="../app/js/reservation.js"></script>
+</body>
+</html>
