@@ -1,28 +1,82 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(45deg, #12777e, #2b2b2b);
+  font-family: 'Poppins', sans-serif;
+}
 
+#logo {
+  width: 36px;
+  height: 46px;
+}
+
+.navbar {
+  background: #ffffff85;
+}
+
+.nav-link {
+  color: rgb(18, 119, 126);
+  cursor: pointer;
+}
+
+.navbar-brand {
+  color: rgb(18, 119, 126);
+  cursor: pointer;
+}
+
+.nav-link {
+  margin-right: 1em !important;
+}
+
+.nav-link:hover {
+  background: #f4f4f4;
+  color: rgb(243, 190, 78);
+
+
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.navbar-toggler {
+  background: #fff !important;
+}
 
 
 .container {
-    border-radius: 5px;
-    padding: 20px;
-    margin: auto;
-    width: 80%;
-    background: rgb(70, 111, 145);
-    color: azure;
-  }
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  width: 50%;
+  background: rgb(255, 255, 255);
+  color: rgb(2, 2, 2);
+}
 
-  input,button,select{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-  }
+input,
+button,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
 
-  input[type="submit"]{
-    background-color:black;
-    color:white;
-  }
-  
+input[type="submit"] {
+  background-color: black;
+  color: white;
+}
+
+#enfantsExiste {
+  display: none;
+}
+
+.forme .buttReserve {
+  cursor: pointer;
+  background: rgb(243, 190, 78);
+}

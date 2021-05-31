@@ -1,19 +1,12 @@
-
 <?php
-    include "../controllers/userController.php";
-  if(isset($_POST['connexion'])){
-    $userController = new UsersController();
-    $userController->Auth();
-}
-    
-    if(isset($_POST['submit'])){
-        $userController = new UsersController();
-        $userController->register();
+require_once ("../models/db.php");
+    session_start();
+    if(!empty($_SESSION['fullname']))
+    {     
+        header("location:index.php");
     }
-    
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +27,16 @@
                             <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="../app/images/logo.png"> </div>
                             <h3 class="mb-5 text-center heading">MARHABA</h3>
                             <h6 class="msg-info">Please login to your account</h6>
-
-                           <form method="post" >
+<!-- form conexion -->
+                           <form method="post" action="../controllers/Login.php" >
                             <div class="form-group"> <label class="form-control-label text-muted">Email</label> <input type="text" name="email" placeholder="email" class="form-control">
                             </div>
                             <div class="form-group"> <label class="form-control-label text-muted">Password</label> <input type="password" name="password" placeholder="Mot de passe" class="form-control">
                             </div>
                             <div class="row justify-content-center my-3 px-3"> <button type="submit" name="connexion" class="btn-block btn-color">Login to Marhaba</button> </div>
                             </form>
+ <!-- endd form conexion -->
+
                             <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot Password?</small></a> </div>
                         </div>
                     </div>
@@ -58,7 +53,7 @@
         </div>
     </div>
     
-
+<!-- register -->
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -69,7 +64,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>      </div>
       <div class="modal-body">
       <div class="card-body bg-light">
-			      	<form method="post" class="mr-1">
+			      	<form method="post" action="../Controllers/singup.php" class="mr-1">
 			      		<div class="form-group">
 				      		<input type="text" name="fullname" placeholder="Nom & Prénom" class="form-control">
 				      	</div>
@@ -81,6 +76,8 @@
 				      	</div>
 			      		<button type="submit" name="submit" class="btn btn-sm btn-primary">Inscription</button>
 			      	</form>
+                      <!-- end register -->
+
 				</div>
       </div>
 

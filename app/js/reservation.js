@@ -1,14 +1,10 @@
-var appartement=300;
-var bungalow=500;
-var chambre_simple=200;
-var chambre_double=250;
 
 function checkApp(){
   document.getElementById("apart").innerHTML=""
 
   if (document.getElementById("apprtmnt").checked)
   {
-  document.getElementById("apart").innerHTML="<input id='valeur_appartement'  min='0' max='8' type='number'>"
+  document.getElementById("apart").innerHTML="<input value=''id='valeur_appartement' name='TypeAppartement' min='0' max='8' type='number'>"
 }
 }
  
@@ -18,7 +14,7 @@ function checkBunglow(){
 
   if (document.getElementById("bunglw").checked)
   {
-  document.getElementById("bng").innerHTML="<input id='valeur_bungalow'  min='0' max='8' type='number'>"
+  document.getElementById("bng").innerHTML="<input value='' id='valeur_bungalow' name='TypeBungalow' min='0' max='8' type='number'>"
 }
 }
 
@@ -27,7 +23,7 @@ function checkChamb(){
 
   if (document.getElementById("chmbr").checked)
   {
-  document.getElementById("chmbre").innerHTML="<input type='checkbox'  min='0' max='8' id='ChSp' onclick='checkChamSpl()' name='chambreSimple'> <label> Chambre simple</label><div id='chmbresimple'></div> <input type='checkbox' id='ChDb' onclick='checkChamDbl()' name='chambreDouble'> <label> Chambre double</label> <div id='doubleChambre'></div>"
+  document.getElementById("chmbre").innerHTML="<input value='chammbre' type='checkbox'  min='0' max='8' id='ChSp' onclick='checkChamSpl()' '> <label> Chambre simple</label><div id='chmbresimple'></div> <input type='checkbox' id='ChDb' onclick='checkChamDbl()' > <label> Chambre double</label> <div id='doubleChambre'></div>"
 }
 }
 
@@ -36,7 +32,7 @@ function checkChamSpl(){
 
   if (document.getElementById("ChSp").checked)
   {
-  document.getElementById("chmbresimple").innerHTML="<input id='numberofchambre'  min='0' max='8' oninput='myFunction()' type='number'><div id='chmbredouble'></div><div class='nbChsimple'></div>"
+  document.getElementById("chmbresimple").innerHTML="<input  value='chambre-Simple'id='numberofchambre'  min='0' max='8' oninput='myFunction()' type='number'><div id='chmbredouble'></div><div class='nbChsimple'></div>"
 }
 }
 
@@ -50,15 +46,13 @@ function myFunction (){
             
              <span>Chambre simple </span>
              <span>Numero${i} :</span><br>
-             <select oncklick='checkVUE()' id="VIEW">
-             <option   value='0'>Vue Interieur</option>
-             <option    value='1'>Vue Exterieur</option>
+             <select name='chambreSimple[${i}][typevue]'  class="simpleSelector">
+             <option   value='VueInterieur'>Vue Interieur</option>
+             <option    value='VueExterieur'>Vue Exterieur</option>
              
                `
         }
 }
-
-
 
 
 function checkChamDbl(){
@@ -66,14 +60,14 @@ function checkChamDbl(){
 
   if (document.getElementById("ChDb").checked)
   {
-  document.getElementById("doubleChambre").innerHTML="<input id='numberofchambre2' oninput='myFunction2()' type='number'><div class='nbChdb'></div>"
+  document.getElementById("doubleChambre").innerHTML="<input value='chambre-Double' id='numberofchambre2' oninput='myFunction2()' type='number' min='0' max='8'><div class='nbChdb'></div>"
 }
 }
 
 
 
 function myFunction2 (){
-  nbChambreDoub = document.querySelector('#numberofchambre2');
+  const nbChambreDoub = document.querySelector('#numberofchambre2');
        document.querySelector('.nbChdb').innerHTML = ''
        for(let i = 1 ; i<= nbChambreDoub.value ; i++){
          
@@ -81,16 +75,15 @@ function myFunction2 (){
             `
             <span>Chambre Double </span>
             <span>Numero${i} :</span><br>
-            <select class="lit" onchange='checklit()' >
+            <select  name='chambreDouble[${i}][typeLit]' class="lit${i}" onchange='checklit()' >
             <option>Choose</option>
             <option   value='litSimple'>2lit Simple</option>
             <option   value='litDouble'>lit Double</option>
             </select>
-            <div class="nbLitdb"></div>
+            <div class="nbLitdb${i}"></div>
 
 
               `
-              document.querySelector(".nbLitdb").innerHTML +=""
 
        }
 }
@@ -100,115 +93,98 @@ function myFunction2 (){
 
 function checklit(){
   document.querySelector(".nbLitdb").innerHTML +=""
-
-      Lit= document.querySelector(`.lit`).value
+  nbChambreDoub = document.querySelector('#numberofchambre2');
+  for(let i = 1 ; i<= nbChambreDoub.value ; i++){
+         
+      Lit= document.querySelector(`.lit${i}`).value
       if(Lit=='litSimple'){
-        document.querySelector(".nbLitdb").innerHTML +=
+        document.querySelector(`.nbLitdb${i}`).innerHTML =
         `  
         <span>Vue chambre 2 lit simple </span>
-        <select oncklick='checklitVue()' id="vueL">
-        <option   value='vueInt'>vue interieur</option>
+        <select  name='chambreDouble[${i}][typevue]' class="doubleSelector" id="vueL">
+        <option   value='VueInterieur'>vue interieur</option>
           `
 
       }
 
       else if(Lit=='litDouble'){
 
-        document.querySelector(".nbLitdb").innerHTML +=
+        document.querySelector(`.nbLitdb${i}`).innerHTML =
 
         `          
         <span>Vue chambre lit doule </span>
-        <select onchange='checklitVue2()' id="vueL">
+        <select name='chambreDouble[${i}][typevue]' class="doubleSelector"  id="vueL">
         <option>Choose</option>
-        <option   value='vueInt'>vue interieur</option>
-        <option   value='vueExt'>vue Exterieur</option>
+        <option   value='VueInterieur'>vue interieur</option>
+        <option   value='VueExterieur'>vue Exterieur</option>
 
           `
       }
     
   }
-
-
-prix=0;
-function pension(){
-  var choix = document.getElementById("pensio").value;
-  switch (choix) {
-      case "complete": document.getElementById("Demip").innerHTML ="";
-          prix = 120;
-
-          break;
-      case "sans":  document.getElementById("Demip").innerHTML ="";
-          prix = 0;
-          break;
-          
-          case "demi": document.getElementById("Demip").innerHTML = "<select> <option>ptDej/dej</option> <option> ptDej/diner</option> </select>";
-         
-          break;
-          
-}
 }
 
-window.addEventListener('load', () => {
-  nbchild = document.querySelector('#nbchild');
-nbchild = document.querySelector('#nbchild');
-nbchild.addEventListener('input', () => {
-    document.querySelector('.children').innerHTML = ''
-    for(let i = 1 ; i<= nbchild.value ; i++){
-      
-        document.querySelector(".children").innerHTML += `<span>enfant${i} :</span><span id = "affiche-prix${i}"></span> <input type="number" min="1" id="id-age${i}"/><div id="en${i}></div>"`
-    }
+
+
+
+function afficher(etat) {
+  document.getElementById("enfantsExiste").style.display = etat;
+}
+
+
+un=document.getElementById("un").value;
+deux=document.getElementById("deux").value;
+trois= document.getElementById("trois").value;
+ 
+document.addEventListener('input',(e)=>{
+
+  if(e.target.id == "un" && e.target.value >0) {
+    document.getElementById("uno").innerHTML=" <select class='enfantselector' value='' id='Unno' name='chambreenfbaby'>   <option value='supplit'> lit supplimentaire </option> <option value='paslitSupp'>pas de lit supplimentaire </option> </select>"
+
+  }
+  else if(e.target.id == "deux" && e.target.value >0){
+    document.getElementById("dos").innerHTML="<select class='enfantselector' value='' id='Unno' name='chambreenfjunior'>   <option value='50%Chambresimple'> 50% Chambre Simple </option>  </select>"
+
+  }
+  else if(e.target.id == "trois" && e.target.value >0 ){
+    document.getElementById("tres").innerHTML=" <select id='trees' value='' name='chambreenfsenior'>   <option value='ajoute chambre simple'> Ajout chambre simple</option> <option value='70%Chambresimple' >ajout 70% chamre simple + lit  </option> </select>"
+
+  }
+
+  else if(e.target.id == "un" && e.target.value == 0) {
+    document.getElementById("uno").innerHTML=""
+
+  }
+  else if(e.target.id == "deux" && e.target.value == 0){
+    document.getElementById("dos").innerHTML=""
+
+  }
+  else if(e.target.id == "trois" && e.target.value == 0 ){
+    document.getElementById("tres").innerHTML=""
+
+  }
+
+
 })
-})
-function Calcule(){
-  nbchild = document.querySelector('#nbchild')
-
-  for(let i = 1 ; i<= nbchild.value ; i++){
-      age =document.querySelector(`#id-age${i}`).value;
-
-      if(age <= 2  ){
-        document.querySelector(`#en${i}`).innerHTML =  '<input type="checkbox">supplément lit enfant 25% chambre simple';
-        
-      }
-}
-}
 
 
 
-
-
-
-
-
-
-
-
-
-// total=0;
-// function checkVUE() {
-//   nbChambreSimple = document.querySelector('#numberofchambre');
-//   for(let i = 1 ; i<= nbChambreSimple.value ; i++){
-//     Vue= document.querySelector(`#VIEW`).value
-//     if(Vue==0){
-//         view = 0;
-//         total +=  view
-//     }
-//     else if(Vue==1){
-//       view = chambre_simple*0.2
-//         total +=  view
-//     }
   
-// }
-// appart = document.querySelector('#valeur_appartement').value;
-// totale1=appartement*appart
-// bngl = document.querySelector('#valeur_bungalow').value;
-// totale2=bungalow*bngl
 
-// ChambreSimple = document.querySelector('#numberofchambre').value;
-// totale3=chambre_simple*ChambreSimple
 
-// Totale=totale1+totale2+totale3
-//   document.querySelector("#affichePrix").innerHTML=Totale;
-// console.log(Totale)
+  
 
-// }
+  
+  
+  
+ 
+
+
+
+
+
+
+
+
+
 

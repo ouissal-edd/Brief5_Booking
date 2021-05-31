@@ -4,12 +4,8 @@
 
 
 
-
-
-
 class Connexion
 {
-
     private $server = "localhost";
     private $username = "root";
     private $password;
@@ -26,10 +22,7 @@ class Connexion
         }
     }
 
-    public function getCon()
-    {
-        return $this->conx;
-    }
+   
 }
 
 
